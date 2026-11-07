@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Athira KC, a Data Science and Statistics student at Christ University.">
+  <title>Athira KC | Personal Portfolio</title>
+  <style>
+    :root {
+      --ink: #1d2935;
+      --muted: #687787;
+      --navy: #18334b;
+      --blue: #426f8c;
+      --pale: #edf3f6;
+      --white: #fff;
+      --line: #dce5eb;
+      --accent: #d6e5ec;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: #f8fafb;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px max(6vw, 22px);
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .brand { color: var(--navy); font-weight: 800; letter-spacing: .4px; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 22px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .hero {
+      padding: 92px max(8vw, 24px) 84px;
+      background: linear-gradient(120deg, #eaf2f6 0%, #f8fafb 58%, #e4edf2 100%);
+    }
+    .hero-inner { max-width: 1050px; margin: auto; }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border: 1px solid #c6d8e2;
+      border-radius: 999px;
+      color: var(--blue);
+      background: rgba(255,255,255,.65);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.7rem, 7vw, 5.3rem);
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 23px 0 28px;
+      color: #526575;
+      font-size: 1.12rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block;
+      padding: 11px 19px;
+      border: 1px solid var(--navy);
+      border-radius: 7px;
+      background: var(--navy);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .93rem;
+    }
+    .btn.secondary { background: transparent; color: var(--navy); }
+    .btn:hover { transform: translateY(-1px); opacity: .9; }
+    .section { max-width: 1050px; margin: auto; padding: 72px 24px; }
+    .section-kicker {
+      margin: 0 0 7px;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+    h2 {
+      margin: 0 0 25px;
+      color: var(--navy);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: -.8px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 34px;
+      align-items: start;
+    }
+    .about-copy { color: #526171; font-size: 1.04rem; }
+    .info-card, .card {
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 8px 25px rgba(24,51,75,.045);
+    }
+    .info-card strong { display: block; color: var(--navy); margin-bottom: 5px; }
+    .info-card p { margin: 0 0 14px; color: var(--muted); }
+    .info-card p:last-child { margin-bottom: 0; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+    .card h3 { margin: 0 0 7px; color: var(--navy); font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .tag {
+      padding: 8px 13px;
+      border: 1px solid #d4e1e8;
+      border-radius: 999px;
+      background: #f0f5f7;
+      color: #35566d;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .timeline { border-left: 2px solid #c9dbe5; margin-left: 8px; padding-left: 23px; }
+    .timeline-item { position: relative; margin: 0 0 25px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid #e7f0f4;
+    }
+    .timeline-item h3 { margin: 0 0 3px; color: var(--navy); }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .year { color: var(--blue); font-size: .88rem; font-weight: 800; }
+    .soft-panel {
+      padding: 28px;
+      border-radius: 14px;
+      background: var(--pale);
+    }
+    .soft-panel p { margin: 0; color: #526575; }
+    .contact {
+      background: var(--navy);
+      color: white;
+    }
+    .contact .section-kicker { color: #b8d0df; }
+    .contact h2 { color: white; }
+    .contact p { max-width: 650px; color: #d3e0e8; }
+    .contact .btn { background: white; color: var(--navy); border-color: white; }
+    .contact .btn.secondary { background: transparent; color: white; }
+    footer {
+      padding: 20px;
+      background: #12283a;
+      color: #c4d2dc;
+      text-align: center;
+      font-size: .85rem;
+    }
+    @media (max-width: 700px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px 17px; }
+      .hero { padding-top: 65px; padding-bottom: 65px; }
+      .about-grid, .cards { grid-template-columns: 1fr; }
+      .section { padding-top: 55px; padding-bottom: 55px; }
+    }
+    @media print {
+      .nav { position: static; }
+      .hero { padding-top: 35px; padding-bottom: 35px; }
+      .section { padding-top: 30px; padding-bottom: 30px; }
+      .btn { border: 1px solid #777; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">ATHIRA KC</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#interests">Interests</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">DATA SCIENCE &amp; STATISTICS STUDENT</span>
+      <h1>Hello, I'm<br>Athira KC.</h1>
+      <p>
+        I’m pursuing a B.Sc. in Data Science and Statistics at Christ University,
+        Bangalore. I’m interested in developing my analytical and technical
+        skills and gaining hands-on internship experience.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn secondary" href="#education">Explore my background</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <p class="section-kicker">A little about me</p>
+    <h2>Curious, creative and learning every day.</h2>
+    <div class="about-grid">
+      <p class="about-copy">
+        I am a second-year B.Sc. Data Science and Statistics student at
+        Christ University (Central Campus), Bangalore. I am eager to gain
+        practical experience where I can apply my analytical thinking,
+        problem-solving abilities and growing technical skills. Alongside
+        my academic interests, I enjoy creative activities such as mural art,
+        sketching, wall painting and photography.
+      </p>
+      <div class="info-card">
+        <strong>Currently studying</strong>
+        <p>B.Sc. Data Science and Statistics</p>
+        <strong>University</strong>
+        <p>Christ University, Central Campus</p>
+        <strong>Based in</strong>
+        <p>Bangalore, India</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <p class="section-kicker">What I'm learning</p>
+    <h2>Skills</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Technical skills</h3>
+        <p>R Programming, SQL, Microsoft Excel, Microsoft Office and Artificial Intelligence.</p>
+      </article>
+      <article class="card">
+        <h3>Personal strengths</h3>
+        <p>Problem-solving and analytical thinking.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <p class="section-kicker">My academic journey</p>
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="year">2025 – 2028</span>
+        <h3>B.Sc. Data Science and Statistics</h3>
+        <p>Christ University (Central Campus), Bangalore, India</p>
+      </div>
+      <div class="timeline-item">
+        <span class="year">2023 – 2025</span>
+        <h3>Pre-University — Science (Biology)</h3>
+        <p>St. Joseph’s Indian Composite Pre-University College, Bangalore, India</p>
+      </div>
+      <div class="timeline-item">
+        <span class="year">2023</span>
+        <h3>High School — CBSE</h3>
+        <p>Kairalee Nilayam Central School, Bangalore, India</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certificates">
+    <p class="section-kicker">Continuous learning</p>
+    <h2>Courses &amp; certifications</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Python Programming</h3>
+        <p>Udemy · 2025</p>
+      </article>
+      <article class="card">
+        <h3>Basics of Python</h3>
+        <p>Infosys · 2026</p>
+      </article>
+      <article class="card">
+        <h3>E-commerce Fundamentals</h3>
+        <p>LinkedIn · 2026</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="interests">
+    <p class="section-kicker">Beyond academics</p>
+    <h2>Creative interests</h2>
+    <div class="tag-list">
+      <span class="tag">Wall painting</span>
+      <span class="tag">Mural art</span>
+      <span class="tag">Sketching</span>
+      <span class="tag">Photography</span>
+    </div>
+    <div style="height:20px"></div>
+    <div class="soft-panel">
+      <p>
+        I enjoy exploring creative ways to express ideas through art and
+        photography. These interests are an important part of who I am
+        outside the classroom.
+      </p>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <p class="section-kicker">Let's connect</p>
+    <h2>Have an opportunity or want to connect?</h2>
+    <p>
+      I’m interested in gaining hands-on internship experience and connecting
+      with people working in data science, statistics and related fields.
+    </p>
+    <div class="actions">
+      <a class="btn" href="mailto:athirakc2006@gmail.com">Email me</a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/athira-kc-38029431b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Athira KC · Personal Portfolio
+  </footer>
+</body>
+</html>
